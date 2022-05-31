@@ -1,0 +1,205 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <style>
+        .avatar {
+            width: 200px;
+            height: 50px;
+            border-radius: 0%;
+            position: absolute;
+            left: 2%;
+        }
+        a{
+            text-decoration: none;
+            color: rgb(228, 4, 4);
+            font-size: 16px;
+            font-family: "Lucida Console", "Courier New", monospace;
+            position: absolute;
+            top:15px;
+            left: 91%;
+            margin:8px;
+            border: none; 
+            
+        }
+        .top{
+            background-color: rgb(254, 242, 242);
+            border: solid;
+            border-color: rgb(139, 138, 138);
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            height: 50px;
+        }
+        .pressure{
+            position: absolute;
+            height: 75px;
+            width: 130px;
+            left:85%;
+            top:1px;
+            border:solid;
+            border-color: whitesmoke;
+            background-color: whitesmoke;
+            font-size: 16px;
+            margin: 2px;
+        }
+        .bg {
+            background-color: #cccccc;
+            height: 545px;
+            width:1000px;
+            top:10px;
+            background-position:relative;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+          }
+        .input1234{
+            position: relative;
+            width: 20%;
+            left:39px;
+            top:10px;
+            font-size: 12px;
+        }
+        .input1234 input[type="number"]{
+            width:40px;
+            height: 10px;
+            
+        }
+        .input1234 select{
+            width: 40px;
+            height: 17px;
+            font-size: 14px;
+        }
+        .T_in{
+            font-size: 12px;
+            width:250px;
+            position: absolute;
+            left:60%;
+            top:12%;
+        }
+        .T_in input[type="number"]{
+            width:40px;
+            height: 10px;
+        }
+        .T_out{
+            font-size: 12px;
+            width:250px;
+            position: absolute;
+            left:60%;
+            top:62%;
+        }
+        .T_out input[type="number"]{
+            width:40px;
+            height: 10px;
+        }
+        .Pka{
+            font-size: 12px;
+            width:200px;
+            position: absolute;
+            left:20%;
+            top:0%;
+        }
+        .Pka p{
+            position: relative;
+            left:30px;
+        }
+        .Pka input{
+            position: absolute;
+            top:25px;
+        }
+    </style>
+</head>
+{% block start %}
+<body style="background-color: white; " >
+    <div class="top" >
+        <img src="{% static 'Images\IR_logo.png' %}" class="avatar">
+        <a href=""><b>Log-out</b></a>
+    </div>
+<div class="bg"style=" background-image: url({% static 'Images\Picture1.jpg' %}); ">
+    <div class="input1234"  >
+        <div class="input4" >
+          <select name="Temp" id="meter" name="meter" style="width:150px;">
+            <option value="123456789">123456789</option>
+            <option value="mm">MM</option>
+            <option value="cm">CM</option>
+          </select>
+        </div>
+        <div class="input1" >
+        <p>T<sub>amb</sub> &emsp;&nbsp;= <input type="number"; id="T_amb"; name="T_amb" >
+          <select name="Temp" id="temp" name="'temp">
+            <option value="C" >C</option>
+            <option value="F">F</option>
+            <option value="K">K</option>
+          </select></p>
+        </div>
+        <div class="input2" >
+        <p>RH<sub>amb</sub> &ensp;= <input type="number"; id="RH"; name="RH" ></p>
+        </div>
+        <div class="input3" >
+        <p>Altitude = <input type="number"; id="Altitude"; name="Altitude" >
+          <select name="meter" id="meter" name="meter">
+            <option value="m">M</option>
+            <option value="mm">MM</option>
+            <option value="cm">CM</option>
+          </select></p>
+        </div>
+    </div>
+    <script>
+        var num=document.getElementById("T_amb");
+        var temp = document.getElementById("temp");
+        var output = document.getElementById("demo");
+        output.innerHTML = num.value;
+        
+        temp.oninput = function() {
+            if(temp.value=="K"){
+                  output.innerHTML = parseInt(num.value) + 273.15; }
+            else if(temp.value=="F"){
+                 output.innerHTML = parseInt(num.value)*1.8 + 32; }
+            else{output.innerHTML = parseInt(num.value)} 
+        }
+
+        
+    </script>
+    <div class="pressure">
+        <p style="font-size: 14px;"><input type="radio" id="Rated_Pressure" name="Pressure" >Rated Pressure</p>
+        <p style="font-size: 14px;"><input type="radio" id="Variable_Pressure" name="Pressure">Variable Pressure</p>
+    </div>
+    <div class="T_in" >
+        <p>T<sub>water,IN,Compressor </sub> &emsp;&nbsp;= <input type="number"; id="T_in"; name="T_in" >
+          <select name="Temp" id="temp" name="'temp">
+            <option value="C" >C</option>
+            <option value="F">F</option>
+            <option value="K">K</option>
+          </select></p>
+    </div>
+    <div class="T_out" >
+        <p>T<sub>water,OUT,Compressor </sub> &emsp;&nbsp;= <input type="number"; id="T_out"; name="T_out" >
+          <select name="Temp" id="temp" name="'temp">
+            <option value="C" >C</option>
+            <option value="F">F</option>
+            <option value="K">K</option>
+          </select></p>
+    </div>
+    <div class="Pka">
+        <p>P<sub>Pka</sub>  = <span id="Pka"></span></p>
+          <input type="range" min="0" max="10" value="5" class="slider" id="myRange" style="width: 100px;">
+    </div>
+    <script>var slider = document.getElementById("myRange");
+        var output1 = document.getElementById("Pka");
+        output1.innerHTML = slider.value;
+        slider.oninput = function() {
+            output1.innerHTML = this.value;
+        }
+    </script>
+</div>
+    
+</body>
+{% endblock start%}
+
+</html>
