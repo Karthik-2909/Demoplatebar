@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-&5%1z92-9#&!v7t636tqdn@l6!z+f01)pb0+9l6(i!9%9q6owb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','platebardemo.herokuapp.com']
+ALLOWED_HOSTS = ['https://demoplatebar.onrender.com']
 
 
 # Application definition
