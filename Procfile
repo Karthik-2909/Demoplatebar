@@ -1,1 +1,0 @@
-web: gunicorn CoolerProps.wsgi --log-file -
