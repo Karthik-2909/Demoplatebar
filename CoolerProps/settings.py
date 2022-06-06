@@ -24,9 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&5%1z92-9#&!v7t636tqdn@l6!z+f01)pb0+9l6(i!9%9q6owb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG= 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['https://demoplatebar.onrender.com']
+ALLOWED_HOSTS= []
+
+RENDER_EXTERNAL_HOSTNAME= os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+
+if RENDER_EXTERNAL_HOSTNAME:
+
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME
 
 
 # Application definition
@@ -137,5 +143,5 @@ EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_POST=587
 EMAIL_USE_TLS=True
-EMAIL_HOST_USER="4ni18cs050_b@nie.ac.in"
-EMAIL_HOST_PASSWORD="Pavan@1411"
+EMAIL_HOST_USER=""
+EMAIL_HOST_PASSWORD=""
